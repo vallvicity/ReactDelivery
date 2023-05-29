@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Counter from './pages/Count';
+import Welcome from './pages/Welcome';
+import Home from './pages/Home';
+import TodoApp from './pages/TodoApp';
+import Game from './pages/TicTacToe';
+import Layout from './routes/Layout';
+import NoPage from './routes/NoPage'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="counter" element={<Counter />} />
+              <Route path="contact" element={<Welcome />} />
+              <Route path="todoApp" element ={<TodoApp />} />
+              <Route path="tictactoe" element ={<Game />} />
+              <Route path="*" element={<NoPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
   );
 }
 
